@@ -23,29 +23,37 @@ int main()
                  "==================================================\n" << std::endl;
 
     auto minMaxYears{ questions.GetMinAndMaxYear() };
-    int year{ Input(
-            "Which year do you want to choose? ["
-            + std::to_string(minMaxYears.first) + "-" + std::to_string(minMaxYears.second) + "]",
-            [&minMaxYears](int n) -> bool
-            {
-                return n >= minMaxYears.first && n <= minMaxYears.second;
-            },
-            "This year has not been implemented yet or does not exist."
-    ) };
+    Question* question;
 
-    auto minMaxNumbers{ questions.GetMinAndMaxNumber(year) };
-    int number{ Input(
-            "Which year do you want to choose? ["
-            + std::to_string(minMaxNumbers.first) + "-" + std::to_string(minMaxNumbers.second) + "]",
-            [&minMaxNumbers](int n) -> bool
-            {
-                return n >= minMaxNumbers.first && n <= minMaxNumbers.second;
-            },
-            "This year has not been implemented yet or does not exist."
-    ) };
+    do
+    {
+        int year{ Input(
+                "Which year do you want to choose? ["
+                + std::to_string(minMaxYears.first) + "-" + std::to_string(minMaxYears.second) + "]",
+                [&minMaxYears](int n) -> bool
+                {
+                    return n >= minMaxYears.first && n <= minMaxYears.second;
+                },
+                "This year has not been implemented yet or does not exist."
+        ) };
 
-    std::cout << "Let's go for the question N°" << number << " - " << year << " : "
-            << questions.GetQuestion(year, number)->GetName() << " !" << std::endl;
+        auto minMaxNumbers{ questions.GetMinAndMaxNumber(year) };
+        int number{ Input(
+                "Which year do you want to choose? ["
+                + std::to_string(minMaxNumbers.first) + "-" + std::to_string(minMaxNumbers.second) + "]",
+                [&minMaxNumbers](int n) -> bool
+                {
+                    return n >= minMaxNumbers.first && n <= minMaxNumbers.second;
+                },
+                "This year has not been implemented yet or does not exist."
+        ) };
 
+        question = questions.GetQuestion(year, number);
+
+        std::cout << "Let's go for the question N°" << number << " - " << year << " : "
+                  << question->GetName() << " !" << std::endl;
+    } while (question->run());
+
+    std::cout << "Thank you and goodbye! (Don't forget to give me a star :) !)" << std::endl;
     return EXIT_SUCCESS;
 }
