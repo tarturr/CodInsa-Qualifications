@@ -17,7 +17,7 @@ void operate_with_inputs(std::vector<float>& schoolRatios, const Operation& oper
     }
 }
 
-int GuestsReception::run() const noexcept
+int GuestsReception::Run() const noexcept
 {
     constexpr std::array<const char*, 7> schools{ "CVL", "HDF", "Lyon", "Rennes", "Rouen", "Strasbourg", "Toulouse" };
     std::vector<float> schoolRatios{};

@@ -20,7 +20,7 @@ public:
 
     virtual ~Question() noexcept = default;
 
-    virtual int run() const noexcept = 0;
+    virtual int Run() const noexcept = 0;
 
     [[nodiscard]] std::string GetName() const noexcept;
     [[nodiscard]] int GetYear() const noexcept;

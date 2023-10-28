@@ -8,7 +8,7 @@
 struct GuestsReception : public Question
 {
     using Question::Question;
-    [[nodiscard]] int run() const noexcept final;
+    [[nodiscard]] int Run() const noexcept final;
 };
 
 
