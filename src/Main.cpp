@@ -27,7 +27,9 @@ int main()
 
     do
     {
-        int year{ Input(
+        int year;
+        if (!Input(
+                year,
                 "Which year do you want to choose? ["
                 + std::to_string(minMaxYears.first) + "-" + std::to_string(minMaxYears.second) + "]",
                 [&minMaxYears](int n) -> bool
@@ -35,10 +37,15 @@ int main()
                     return n >= minMaxYears.first && n <= minMaxYears.second;
                 },
                 "This year has not been implemented yet or does not exist."
-        ) };
+        ))
+        {
+            std::cout << "You've decided to stop the program." << std::endl;
+            break;
+        }
 
         auto minMaxNumbers{ questions.GetMinAndMaxNumber(year) };
-        int number{ Input(
+        int number;
+        if (!Input(
                 "Which year do you want to choose? ["
                 + std::to_string(minMaxNumbers.first) + "-" + std::to_string(minMaxNumbers.second) + "]",
                 [&minMaxNumbers](int n) -> bool
@@ -46,7 +53,11 @@ int main()
                     return n >= minMaxNumbers.first && n <= minMaxNumbers.second;
                 },
                 "This year has not been implemented yet or does not exist."
-        ) };
+        ))
+        {
+            std::cout << "You've decided to stop the program." << std::endl;
+            break;
+        }
 
         question = questions.GetQuestion(year, number);
 

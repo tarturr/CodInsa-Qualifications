@@ -5,28 +5,43 @@
 
 
 template<typename Predicate>
-int Input(std::string_view question, const Predicate& predicate, std::string_view errorMessage)
+bool Input(int& n, std::string_view question, const Predicate& predicate, std::string_view errorMessage)
 {
     std::cout << question << "\n>";
-    int n;
+    std::string str;
 
-    while (!(std::cin >> n) || !predicate(n))
+    while (true)
     {
-        if (std::cin.eof())
+        while (!(std::cin >> str))
         {
-            throw std::runtime_error("The input has unexpectedly been closed.");
+            if (std::cin.eof())
+            {
+                throw std::runtime_error("The input has unexpectedly been closed.");
+            }
+            else if (std::cin.fail())
+            {
+                std::cout << "Input error. Try again.\n>" << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
+            else
+            {
+                std::cout << "Error: " << errorMessage << ".\n>";
+            }
         }
-        else if (std::cin.fail())
+
+        if (str == "exit") return false;
+
+        try
         {
-            std::cout << "Please enter a valid number." << std::endl;
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        }
-        else
+            n = std::stoi(str);
+            return true;
+        } catch (const std::invalid_argument& ex)
         {
-            std::cout << "Error: " << errorMessage << ".\n>";
+            std::cout << "Please enter a valid number.\n>" << std::endl;
+        } catch (const std::out_of_range& ex)
+        {
+            std::cout << "This number is too large.\n>" << std::endl;
         }
     }
-
-    return n;
 }
