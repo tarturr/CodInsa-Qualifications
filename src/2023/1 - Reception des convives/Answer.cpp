@@ -9,6 +9,8 @@
 template<typename Operation>
 void operate_with_inputs(std::vector<float>& schoolRatios, const Operation& operation)
 {
+    std::cout << '>';
+
     for (int i = 0; i < 7; i++)
     {
         int n;
