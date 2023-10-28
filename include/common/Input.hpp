@@ -7,7 +7,7 @@
 
 
 template<typename Predicate>
-int Input(std::string_view question, const Predicate& predicate, std::string_view errorMessage);
+bool Input(int& n, std::string_view question, const Predicate& predicate, std::string_view errorMessage);
 
 #include "../../src/common/Input.inl"
 

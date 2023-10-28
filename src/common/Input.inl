@@ -24,10 +24,6 @@ bool Input(int& n, std::string_view question, const Predicate& predicate, std::s
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             }
-            else
-            {
-                std::cout << "Error: " << errorMessage << ".\n>";
-            }
         }
 
         if (str == "exit") return false;
@@ -35,7 +31,11 @@ bool Input(int& n, std::string_view question, const Predicate& predicate, std::s
         try
         {
             n = std::stoi(str);
-            return true;
+
+            if (predicate(n))
+                return true;
+
+            std::cout << "Error: " << errorMessage << ".\n>";
         } catch (const std::invalid_argument& ex)
         {
             std::cout << "Please enter a valid number.\n>" << std::endl;
