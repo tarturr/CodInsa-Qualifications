@@ -1,3 +1,5 @@
+#include "../../../include/2023/1 - Reception des convives/Answer.hpp"
+
 #include <iostream>
 #include <vector>
 #include <array>
@@ -15,7 +17,7 @@ void operate_with_inputs(std::vector<float>& schoolRatios, const Operation& oper
     }
 }
 
-int main()
+int GuestsReception::run() const noexcept
 {
     constexpr std::array<const char*, 7> schools{ "CVL", "HDF", "Lyon", "Rennes", "Rouen", "Strasbourg", "Toulouse" };
     std::vector<float> schoolRatios{};
