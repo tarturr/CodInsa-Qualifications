@@ -20,7 +20,7 @@ int main()
                  "you want to test, with your own inputs.\n\n"
                  "Please consider to set a star on this repository\n"
                  "if you liked my programs.\n\n"
-                 "==================================================\n" << std::endl;
+                 "==================================================" << std::endl;
 
     auto minMaxYears{ questions.GetMinAndMaxYear() };
     Question* question;
@@ -30,41 +30,41 @@ int main()
         int year;
         if (!Input(
                 year,
-                "Which year do you want to choose? ["
+                "\n\n--------------------------------------------------\n\nWhich year do you want to choose? ["
                 + std::to_string(minMaxYears.first) + "-" + std::to_string(minMaxYears.second) + "]",
                 [&minMaxYears](int n) -> bool
                 {
                     return n >= minMaxYears.first && n <= minMaxYears.second;
                 },
-                "This year has not been implemented yet or does not exist."
+                "This year has not been implemented yet or does not exist"
         ))
         {
-            std::cout << "You've decided to stop the program." << std::endl;
             break;
         }
 
         auto minMaxNumbers{ questions.GetMinAndMaxNumber(year) };
         int number;
         if (!Input(
+                number,
                 "Which year do you want to choose? ["
                 + std::to_string(minMaxNumbers.first) + "-" + std::to_string(minMaxNumbers.second) + "]",
                 [&minMaxNumbers](int n) -> bool
                 {
                     return n >= minMaxNumbers.first && n <= minMaxNumbers.second;
                 },
-                "This year has not been implemented yet or does not exist."
+                "This year has not been implemented yet or does not exist"
         ))
         {
-            std::cout << "You've decided to stop the program." << std::endl;
             break;
         }
 
         question = questions.GetQuestion(year, number);
 
-        std::cout << "Let's go for the question N°" << number << " - " << year << " : "
+        std::cout << "Let's go for the question " << number << " - " << year << " : "
                   << question->GetName() << " !" << std::endl;
-    } while (question->run());
+    } while (question->Run() == EXIT_SUCCESS);
 
-    std::cout << "Thank you and goodbye! (Don't forget to give me a star :) !)" << std::endl;
+    std::cout << "You've decided to stop the program.\n\n--------------------------------------------------\n\n"
+                 "Thank you and goodbye! (Don't forget to give me a star :) !)" << std::endl;
     return EXIT_SUCCESS;
 }
