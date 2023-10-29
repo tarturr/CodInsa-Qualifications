@@ -13,13 +13,14 @@ From https://codinsa.org/ :
 ## Set up my answers program
 
 1) __Download the code__
-<br>
-You will have to run the following command to download my code :<br>
-```git clone https://github.com/tarturr/CodInsa-Qualifications.git``` <br><br>
+<br>You will have to run the following command to download my code :<br>
+```
+git clone https://github.com/tarturr/CodInsa-Qualifications.git
+```
+<br><br>
 
 2) __Execute the program__
-<br>
-Some requirements as the *xmake* build tool are needed to use my program. If you don't have it, you can downlaod it at https://xmake.io/#/guide/installation. <br><br>
+<br>Some requirements as the *xmake* build tool are needed to use my program. If you don't have it, you can downlaod it at https://xmake.io/#/guide/installation. <br><br>
 Change the directory to go to my program files with this command :<br>
 ``cd CodInsa-Qualifications``<br><br>
 Then, build and run my program with :<br>
