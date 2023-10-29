@@ -4,8 +4,9 @@
 #include "../include/common/Questions.hpp"
 #include "../include/2023/1 - Reception des convives/Answer.hpp"
 #include "../include/2023/2 - Decoupe du camembert normand AOP/Answer.hpp"
+#include "../include/2023/3 - Mets et vins du Centre Val de Loire/Answer.hpp"
 
-#define PROBLEMS_SOLVED 2
+#define PROBLEMS_SOLVED 3
 
 
 int main()
@@ -13,7 +14,8 @@ int main()
     QuestionManager<PROBLEMS_SOLVED> questions
     {{
         std::make_unique<GuestsReception>("Reception des convives", 2023, 1),
-        std::make_unique<CamembertCutting>("Decoupe du camembert normand AOP", 2023, 2)
+        std::make_unique<CamembertCutting>("Decoupe du camembert normand AOP", 2023, 2),
+        std::make_unique<FoodAndWine>("Mets et vins du Centre Val de Loire", 2023, 3)
     }};
 
     std::cout << "==================================================\n\n"
@@ -30,7 +32,7 @@ int main()
     do
     {
         int year;
-        if (!Input(
+        if (!IO::Input(
                 year,
                 "\n\n--------------------------------------------------\n\nWhich year do you want to choose? ["
                 + std::to_string(minMaxYears.first) + "-" + std::to_string(minMaxYears.second) + "]",
@@ -46,7 +48,7 @@ int main()
 
         auto minMaxNumbers{ questions.GetMinAndMaxNumber(year) };
         int number;
-        if (!Input(
+        if (!IO::Input(
                 number,
                 "Which question number do you want to choose? ["
                 + std::to_string(minMaxNumbers.first) + "-" + std::to_string(minMaxNumbers.second) + "]",
