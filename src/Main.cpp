@@ -46,13 +46,13 @@ int main()
         int number;
         if (!Input(
                 number,
-                "Which year do you want to choose? ["
+                "Which question number do you want to choose? ["
                 + std::to_string(minMaxNumbers.first) + "-" + std::to_string(minMaxNumbers.second) + "]",
                 [&minMaxNumbers](int n) -> bool
                 {
                     return n >= minMaxNumbers.first && n <= minMaxNumbers.second;
                 },
-                "This year has not been implemented yet or does not exist"
+                "This question number has not been implemented yet or does not exist"
         ))
         {
             break;
