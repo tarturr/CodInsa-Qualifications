@@ -17,7 +17,6 @@ From https://codinsa.org/ :
 ```
 git clone https://github.com/tarturr/CodInsa-Qualifications.git
 ```
-<br><br>
 
 2) __Execute the program__
 <br>Some requirements as the *xmake* build tool are needed to use my program. If you don't have it, you can downlaod it at https://xmake.io/#/guide/installation. <br><br>
