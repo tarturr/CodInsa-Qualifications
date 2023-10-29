@@ -2,18 +2,18 @@
 
 
 template<std::size_t QuestionsCount>
-QuestionManager<QuestionsCount>::Questions &QuestionManager<QuestionsCount>::GetQuestions() const noexcept
-{
-    return m_questions;
-}
-
-template<std::size_t QuestionsCount>
 QuestionManager<QuestionsCount>::QuestionManager(QuestionManager<QuestionsCount>::Questions questions) noexcept
 {
     for (int i{ 0 }; i < QuestionsCount; i++)
     {
         m_questions[i] = std::move(questions[i]);
     }
+}
+
+template<std::size_t QuestionsCount>
+std::array<std::unique_ptr<Question>, QuestionsCount> &QuestionManager<QuestionsCount>::GetQuestions() const noexcept
+{
+    return m_questions;
 }
 
 template<std::size_t QuestionsCount>
