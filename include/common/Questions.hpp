@@ -5,6 +5,7 @@
 #include <memory>
 #include <array>
 #include <algorithm>
+#include <string>
 
 
 struct Question
