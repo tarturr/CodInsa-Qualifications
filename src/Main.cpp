@@ -3,15 +3,17 @@
 #include "../include/common/Input.hpp"
 #include "../include/common/Questions.hpp"
 #include "../include/2023/1 - Reception des convives/Answer.hpp"
+#include "../include/2023/2 - Decoupe du camembert normand AOP/Answer.hpp"
+
+#define PROBLEMS_SOLVED 2
 
 
 int main()
 {
-    constexpr int PROBLEMS_SOLVED{ 1 };
-
     QuestionManager<PROBLEMS_SOLVED> questions
     {{
-        std::make_unique<GuestsReception>("Reception des convives", 2023, 1)
+        std::make_unique<GuestsReception>("Reception des convives", 2023, 1),
+        std::make_unique<CamembertCutting>("Decoupe du camembert normand AOP", 2023, 2)
     }};
 
     std::cout << "==================================================\n\n"

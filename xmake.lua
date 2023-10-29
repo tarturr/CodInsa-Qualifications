@@ -3,7 +3,12 @@ set_languages("c++20")
 
 target("CodInsa-Qualifications")
     set_kind("binary")
-    add_files("src/Main.cpp", "src/common/Questions.cpp", "src/2023/1 - Reception des convives/Answer.cpp")
+    add_files(
+        "src/Main.cpp",
+        "src/common/Questions.cpp",
+        "src/2023/1 - Reception des convives/Answer.cpp",
+        "src/2023/2 - Decoupe du camembert AOP/Answer.cpp"
+    )
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
