@@ -1,4 +1,5 @@
 #include "../../../include/2023/1 - Reception des convives/Answer.hpp"
+#include "../../../include/common/Input.hpp"
 
 #include <iostream>
 #include <vector>
@@ -6,29 +7,16 @@
 #include <algorithm>
 
 
-template<typename Operation>
-void operate_with_inputs(std::vector<float>& schoolRatios, const Operation& operation)
-{
-    std::cout << '>';
-
-    for (int i = 0; i < 7; i++)
-    {
-        int n;
-        std::cin >> n;
-        operation(i, n);
-    }
-}
-
 int GuestsReception::Run() const noexcept
 {
     constexpr std::array<const char*, 7> schools{ "CVL", "HDF", "Lyon", "Rennes", "Rouen", "Strasbourg", "Toulouse" };
-    std::vector<float> schoolRatios{};
 
-    operate_with_inputs(schoolRatios, [&schoolRatios](int i, int n) { schoolRatios.push_back(n); });
-    operate_with_inputs(schoolRatios, [&schoolRatios](int i, int n) { schoolRatios[i] /= static_cast<float>(n); });
+    std::vector<float> schoolRatios{ IO::DefaultInput<float>(7) };
+    IO::DefaultInputWithOperation<float>(
+            [&schoolRatios](int i, float val) { schoolRatios[i] /= val; },
+            7
+    );
 
-    int schoolIndex{ static_cast<int>(std::max_element(schoolRatios.begin(), schoolRatios.end()) - schoolRatios.begin()) };
-    std::cout << schools[schoolIndex] << std::endl;
-
+    std::cout << schools[static_cast<int>(std::max_element(schoolRatios.begin(), schoolRatios.end()) - schoolRatios.begin())] << std::endl;
     return EXIT_SUCCESS;
 }
