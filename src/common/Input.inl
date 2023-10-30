@@ -11,6 +11,7 @@ namespace IO
     std::vector<T> DefaultInputWithOperation(const Operation &operation, int iterations)
     {
         std::vector<T> nums{};
+        nums.reserve(iterations);
 
         for (int i{ 0 }; i < iterations; i++)
         {
